@@ -9,6 +9,7 @@ import {
 } from "zmp-ui";
 
 import { AppProps } from "zmp-ui/app";
+import type { CSSProperties } from "react";
 
 import BottomNavigation from "@/components/bottom-navigation";
 
@@ -18,11 +19,17 @@ import ProductDetailPage from "@/pages/roduct-detail";
 import ShowroomPage from "@/pages/showroom";
 
 const Layout = () => {
+  const systemInfo = getSystemInfo();
+  const statusBarHeight = systemInfo.statusBarHeight ?? 0;
+
   return (
-    <App theme={getSystemInfo().zaloTheme as AppProps["theme"]}>
+    <App theme={systemInfo.zaloTheme as AppProps["theme"]}>
       <SnackbarProvider>
         <ZMPRouter>
-          <div className="app-shell">
+          <div
+            className="app-shell"
+            style={{ "--app-safe-area-top": `${statusBarHeight}px` } as CSSProperties}
+          >
             <div className="app-content">
               <AnimationRoutes>
                 <Route path="/" element={<HomePage />} />
