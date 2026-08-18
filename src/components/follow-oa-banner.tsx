@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { followOA } from "zmp-sdk/apis";
 
+import logo from "@/MINIAPP ALCOVA SOURCE/Logo/LOGO-ALCOVA-BLACK.png";
+
 const ALCOVA_OA_ID = "3649485890998696800";
 
 type FollowStatus = "idle" | "loading" | "followed";
@@ -50,7 +52,7 @@ function FollowOABanner() {
 
       <div className="follow-oa-card">
         <div className="follow-oa-logo">
-          <span>A</span>
+          <img src={logo} alt="Alcova" />
         </div>
 
         <div className="follow-oa-info">

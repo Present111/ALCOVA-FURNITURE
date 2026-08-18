@@ -16,6 +16,34 @@ type ConsultationForm = {
   content: string;
 };
 
+type QuickActionIconName = "phone" | "chat" | "location";
+
+function QuickActionIcon({ name }: { name: QuickActionIconName }) {
+  if (name === "phone") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 3.5 4.8 5.2c-.8.6-1.1 1.7-.7 2.6 2.7 6.5 7.9 11.7 14.4 14.4.9.4 2 .1 2.6-.7l1.7-2.2-4.2-3.1-2.1 1.5a14.8 14.8 0 0 1-10.1-10.1L7.9 5.5z" />
+      </svg>
+    );
+  }
+
+  if (name === "chat") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4.5 5.5h15v10h-9l-4.5 3v-3h-1.5z" />
+        <path d="M8.5 10.5h7" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z" />
+      <circle cx="12" cy="10" r="2" />
+    </svg>
+  );
+}
+
 function ConsultationPage() {
   const navigate = useNavigate();
 
@@ -184,7 +212,9 @@ function ConsultationPage() {
             className="consultation-action"
             onClick={handleCallHotline}
           >
-            <div className="action-icon">☎</div>
+            <div className="action-icon">
+              <QuickActionIcon name="phone" />
+            </div>
 
             <div>
               <strong>Gọi hotline</strong>
@@ -199,7 +229,9 @@ function ConsultationPage() {
             className="consultation-action"
             onClick={handleChatOA}
           >
-            <div className="action-icon">◌</div>
+            <div className="action-icon">
+              <QuickActionIcon name="chat" />
+            </div>
 
             <div>
               <strong>Chat với Alcova</strong>
@@ -214,7 +246,9 @@ function ConsultationPage() {
             className="consultation-action"
             onClick={handleShowroom}
           >
-            <div className="action-icon">⌖</div>
+            <div className="action-icon">
+              <QuickActionIcon name="location" />
+            </div>
 
             <div>
               <strong>Tham quan showroom</strong>
@@ -223,40 +257,6 @@ function ConsultationPage() {
 
             <b>›</b>
           </button>
-        </section>
-
-        {/* Showroom info */}
-        <section className="showroom-contact-card">
-          <p className="detail-eyebrow">ALCOVA SHOWROOM</p>
-
-          <h2>Ghé thăm Alcova</h2>
-
-          <div className="showroom-contact-row">
-            <span>⌖</span>
-
-            <div>
-              <strong>Địa chỉ</strong>
-              <p>{SHOWROOM_ADDRESS}</p>
-            </div>
-          </div>
-
-          <div className="showroom-contact-row">
-            <span>☎</span>
-
-            <div>
-              <strong>Hotline</strong>
-              <p>{ALCOVA_HOTLINE}</p>
-            </div>
-          </div>
-
-          <div className="showroom-contact-row">
-            <span>✉</span>
-
-            <div>
-              <strong>Email</strong>
-              <p>sales@alcovafurniture.vn</p>
-            </div>
-          </div>
         </section>
 
         {/* Consultation form */}

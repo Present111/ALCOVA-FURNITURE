@@ -1,48 +1,56 @@
 import { Page, useNavigate } from "zmp-ui";
 
 import FollowOABanner from "@/components/follow-oa-banner";
-import homeBanner from "@/static/banner-home.jpg";
+import homeBanner from "@/static/alcova/home-hero.jpg";
+import whiteLogo from "@/MINIAPP ALCOVA SOURCE/Logo/ALCOVA_Logo_White_Transparent.png";
+import aboutIcon from "@/static/alcova/about.webp";
+import consultationIcon from "@/static/alcova/consultation.webp";
+import memberIcon from "@/static/alcova/member.webp";
+import newsIcon from "@/static/alcova/news.webp";
+import productIcon from "@/static/alcova/product.webp";
+import promotionIcon from "@/static/alcova/promotion.webp";
+import showroomIcon from "@/static/alcova/showroom.webp";
 import sofaImage from "@/static/product-sofa.jpg";
 import tableImage from "@/static/product-table.png";
 
 const menuItems = [
   {
-    icon: "⌂",
+    icon: showroomIcon,
     label: "Online\nShowroom",
     path: "/showroom",
   },
   {
-    icon: "◌",
+    icon: consultationIcon,
     label: "Tư vấn",
     path: "/consultation",
   },
   {
-    icon: "▣",
+    icon: productIcon,
     label: "Sản phẩm",
     path: "/showroom",
   },
   {
-    icon: "△",
-    label: "Thiết kế\nthi công",
-    path: "/consultation",
+    icon: memberIcon,
+    label: "Thành viên",
+    path: "",
   },
   {
-    icon: "ⓘ",
+    icon: aboutIcon,
     label: "Giới thiệu",
     path: "",
   },
   {
-    icon: "▤",
+    icon: newsIcon,
     label: "Tin tức",
-    path: "",
+    path: "/news",
   },
   {
-    icon: "◇",
+    icon: promotionIcon,
     label: "Khuyến mãi",
-    path: "",
+    path: "/promotions",
   },
   {
-    icon: "◈",
+    icon: memberIcon,
     label: "Chính sách\nhỗ trợ",
     path: "",
   },
@@ -77,7 +85,6 @@ function HomePage() {
   return (
     <Page className="alcova-page">
       <main className="alcova-home">
-        {/* Search */}
         <section className="search-section">
           <button
             type="button"
@@ -105,16 +112,12 @@ function HomePage() {
           }}
         >
           <div className="hero-content">
-            <div className="hero-logo-text">ALCOVA</div>
-
-            <div className="hero-logo-line" />
-
-            <div className="hero-logo-subtitle">FURNITURE</div>
+            <img className="hero-brand-logo" src={whiteLogo} alt="Alcova Furniture" />
 
             <h1>
-              Không gian sống
+              Tinh tế chuẩn Hàn
               <br />
-              mang dấu ấn riêng
+              Đẹp mọi không gian
             </h1>
 
             <p className="hero-description">
@@ -147,7 +150,7 @@ function HomePage() {
                 onClick={() => handleNavigate(item.path)}
               >
                 <div className="menu-icon">
-                  <span>{item.icon}</span>
+                  <img src={item.icon} alt="" />
                 </div>
 
                 <div className="menu-label">
@@ -166,7 +169,7 @@ function HomePage() {
 
         {/* Giới thiệu Alcova */}
         <section className="about-card">
-          <p className="section-eyebrow">ALCOVA FURNITURE</p>
+          <img className="about-brand-logo" src={whiteLogo} alt="Alcova Furniture" />
 
           <h2>Nội thất cho không gian sống hiện đại</h2>
 
@@ -175,7 +178,7 @@ function HomePage() {
             tinh tế, chú trọng trải nghiệm và chất lượng sử dụng.
           </p>
 
-          <button type="button" className="text-button">
+          <button type="button" className="text-button" onClick={() => navigate("/news")}>
             Khám phá Alcova
             <span>→</span>
           </button>
@@ -211,7 +214,16 @@ function HomePage() {
 
                   <h3>{product.name}</h3>
 
-                  <p>{product.price}</p>
+                  <button
+                    type="button"
+                    className="product-buy-button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      navigate("/consultation");
+                    }}
+                  >
+                    Mua ngay
+                  </button>
                 </div>
               </article>
             ))}
@@ -228,7 +240,11 @@ function HomePage() {
             <p>Cập nhật chương trình và sản phẩm nổi bật dành cho bạn.</p>
           </div>
 
-          <button type="button" className="promotion-arrow">
+          <button
+            type="button"
+            className="promotion-arrow"
+            onClick={() => navigate("/promotions")}
+          >
             →
           </button>
         </section>

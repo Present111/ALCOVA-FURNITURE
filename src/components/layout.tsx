@@ -15,7 +15,9 @@ import BottomNavigation from "@/components/bottom-navigation";
 
 import ConsultationPage from "@/pages/consultation";
 import HomePage from "@/pages/index";
+import NewsPage from "@/pages/news";
 import ProductDetailPage from "@/pages/roduct-detail";
+import PromotionPage from "@/pages/promotion";
 import ShowroomPage from "@/pages/showroom";
 
 const Layout = () => {
@@ -37,6 +39,10 @@ const Layout = () => {
                 <Route path="/showroom" element={<ShowroomPage />} />
 
                 <Route path="/consultation" element={<ConsultationPage />} />
+
+                <Route path="/news" element={<NewsPage />} />
+
+                <Route path="/promotions" element={<PromotionPage />} />
 
                 <Route path="/product/:id" element={<ProductDetailPage />} />
               </AnimationRoutes>
