@@ -77,6 +77,8 @@ button {
   overflow-y: auto;
 
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
 
   background: #ffffff;
 }
@@ -84,14 +86,35 @@ button {
 .alcova-page {
   width: 100% !important;
 
+  height: auto !important;
   min-height: 100% !important;
 
   margin: 0 !important;
   padding: 0 !important;
 
   overflow: visible !important;
+  flex: 0 0 auto !important;
 
   background: #ffffff !important;
+}
+
+/* Zalo UI's AnimationRoutes adds a second scroll container by default.
+   The app shell owns scrolling, so routed pages must expand naturally. */
+.app-content > .zaui-routes {
+  min-height: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.app-content .zaui-routes-item {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.app-content .zaui-routes-item > .zaui-page {
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* =====================================================
@@ -1038,7 +1061,7 @@ button {
 
   display: grid;
 
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   gap: 10px;
 }
@@ -1053,7 +1076,7 @@ button {
 }
 
 .showroom-product-image {
-  height: 240px;
+  height: 160px;
 
   overflow: hidden;
 
